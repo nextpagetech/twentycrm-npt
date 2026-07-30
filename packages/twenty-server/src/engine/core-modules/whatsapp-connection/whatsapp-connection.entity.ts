@@ -11,8 +11,8 @@ import {
 
 import { UUIDScalarType } from 'src/engine/api/graphql/workspace-schema-builder/graphql-types/scalars';
 import { type EncryptedString } from 'src/engine/core-modules/secret-encryption/branded-strings/encrypted-string.type';
-import { WorkspaceRelatedEntity } from 'src/engine/workspace-manager/types/workspace-related-entity';
 import { type WhatsAppConnectionStatus } from 'src/engine/core-modules/whatsapp-connection/types/whatsapp-connection-status.type';
+import { WorkspaceRelatedEntity } from 'src/engine/workspace-manager/types/workspace-related-entity';
 
 @Entity({ name: 'whatsAppConnection', schema: 'core' })
 @ObjectType('WhatsAppConnection')
@@ -51,7 +51,7 @@ export class WhatsAppConnectionEntity extends WorkspaceRelatedEntity {
   accessToken: EncryptedString;
 
   @Field()
-  @Column({ type: 'varchar', nullable: false, default: 'v23.0' })
+  @Column({ type: 'varchar', nullable: false })
   apiVersion: string;
 
   @Field()

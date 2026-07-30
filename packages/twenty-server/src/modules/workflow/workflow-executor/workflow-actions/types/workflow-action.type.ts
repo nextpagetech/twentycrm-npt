@@ -20,6 +20,7 @@ import {
   type WorkflowUpsertRecordActionSettings,
 } from 'src/modules/workflow/workflow-executor/workflow-actions/record-crud/types/workflow-record-crud-action-settings.type';
 import { type WorkflowActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/types/workflow-action-settings.type';
+import { type WorkflowSendWhatsAppMessageActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/whatsapp/types/workflow-send-whatsapp-message-action-settings.type';
 
 type BaseWorkflowAction = {
   id: string;
@@ -47,6 +48,11 @@ export type WorkflowLogicFunctionAction = BaseWorkflowAction & {
 export type WorkflowSendEmailAction = BaseWorkflowAction & {
   type: WorkflowActionType.SEND_EMAIL;
   settings: WorkflowSendEmailActionSettings;
+};
+
+export type WorkflowSendWhatsAppMessageAction = BaseWorkflowAction & {
+  type: WorkflowActionType.SEND_WHATSAPP_MESSAGE;
+  settings: WorkflowSendWhatsAppMessageActionSettings;
 };
 
 export type WorkflowDraftEmailAction = BaseWorkflowAction & {
@@ -132,6 +138,7 @@ export type WorkflowAction =
   | WorkflowCodeAction
   | WorkflowLogicFunctionAction
   | WorkflowSendEmailAction
+  | WorkflowSendWhatsAppMessageAction
   | WorkflowDraftEmailAction
   | WorkflowCreateCalendarEventAction
   | WorkflowCreateRecordAction

@@ -28,6 +28,7 @@ export class WhatsAppConnectionResolver {
   ) {}
 
   @Query(() => [WhatsAppConnectionEntity])
+  @UseGuards(SettingsPermissionGuard(PermissionFlagType.WORKFLOWS))
   async whatsAppConnections(
     @AuthWorkspace() workspace: WorkspaceEntity,
   ): Promise<WhatsAppConnectionEntity[]> {
@@ -35,6 +36,7 @@ export class WhatsAppConnectionResolver {
   }
 
   @Query(() => WhatsAppConnectionEntity, { nullable: true })
+  @UseGuards(SettingsPermissionGuard(PermissionFlagType.WORKFLOWS))
   async whatsAppConnection(
     @AuthWorkspace() workspace: WorkspaceEntity,
     @Args('id', { type: () => UUIDScalarType }) id: string,

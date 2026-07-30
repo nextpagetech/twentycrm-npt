@@ -55,62 +55,283 @@ export const WorkflowRunStepNodeDetail = ({
   switch (stepDefinition.type) {
     case 'trigger': {
       switch (stepDefinition.definition.type) {
-        case 'DATABASE_EVENT':
-          return <WorkflowEditTriggerDatabaseEventForm key={stepId} trigger={stepDefinition.definition} triggerOptions={{ readonly: true }} />;
-        case 'MANUAL':
-          return <WorkflowEditTriggerManual key={stepId} trigger={stepDefinition.definition} triggerOptions={{ readonly: true }} />;
-        case 'WEBHOOK':
-          return <WorkflowEditTriggerWebhookForm key={stepId} trigger={stepDefinition.definition} triggerOptions={{ readonly: true }} />;
-        case 'CRON':
-          return <WorkflowEditTriggerCronForm key={stepId} trigger={stepDefinition.definition} triggerOptions={{ readonly: true }} />;
+        case 'DATABASE_EVENT': {
+          return (
+            <WorkflowEditTriggerDatabaseEventForm
+              key={stepId}
+              trigger={stepDefinition.definition}
+              triggerOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'MANUAL': {
+          return (
+            <WorkflowEditTriggerManual
+              key={stepId}
+              trigger={stepDefinition.definition}
+              triggerOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'WEBHOOK': {
+          return (
+            <WorkflowEditTriggerWebhookForm
+              key={stepId}
+              trigger={stepDefinition.definition}
+              triggerOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'CRON': {
+          return (
+            <WorkflowEditTriggerCronForm
+              key={stepId}
+              trigger={stepDefinition.definition}
+              triggerOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
       }
 
-      return assertUnreachable(stepDefinition.definition, `Expected the step to have an handler; ${JSON.stringify(stepDefinition)}`);
+      return assertUnreachable(
+        stepDefinition.definition,
+        `Expected the step to have an handler; ${JSON.stringify(stepDefinition)}`,
+      );
     }
     case 'action': {
       switch (stepDefinition.definition.type) {
-        case 'CODE':
-          return <WorkflowActionCode key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'LOGIC_FUNCTION':
-          return <WorkflowEditActionLogicFunction key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
+        case 'CODE': {
+          return (
+            <WorkflowActionCode
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'LOGIC_FUNCTION': {
+          return (
+            <WorkflowEditActionLogicFunction
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
         case 'SEND_EMAIL':
-        case 'DRAFT_EMAIL':
-          return <WorkflowEditActionEmailBase key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'SEND_WHATSAPP_MESSAGE':
-          return <WorkflowEditActionSendWhatsAppMessage key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'CREATE_CALENDAR_EVENT':
-          return <WorkflowEditActionCreateCalendarEvent key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'CREATE_RECORD':
-          return <WorkflowEditActionCreateRecord key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'UPDATE_RECORD':
-          return <WorkflowEditActionUpdateRecord key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'DELETE_RECORD':
-          return <WorkflowEditActionDeleteRecord key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'FIND_RECORDS':
-          return <WorkflowEditActionFindRecords key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'UPSERT_RECORD':
-          return <WorkflowEditActionUpsertRecord key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'PICK_RECORD':
-          return <WorkflowEditActionPickRecord key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'FORM':
-          return <WorkflowEditActionFormFiller key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: stepExecutionStatus !== 'PENDING' && stepExecutionStatus !== 'RUNNING' }} />;
-        case 'HTTP_REQUEST':
-          return <WorkflowEditActionHttpRequest key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'AI_AGENT':
-          return <WorkflowEditActionAiAgent key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'FILTER':
-          return <WorkflowEditActionFilter key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'IF_ELSE':
-          return <WorkflowEditActionIfElse key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'ITERATOR':
-          return <WorkflowEditActionIterator key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
-        case 'EMPTY':
-          return <WorkflowEditActionEmpty key={stepId} actionOptions={{ readonly: true }} />;
-        case 'DELAY':
-          return <WorkflowEditActionDelay key={stepId} action={stepDefinition.definition} actionOptions={{ readonly: true }} />;
+        case 'DRAFT_EMAIL': {
+          return (
+            <WorkflowEditActionEmailBase
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'SEND_WHATSAPP_MESSAGE': {
+          return (
+            <WorkflowEditActionSendWhatsAppMessage
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'CREATE_CALENDAR_EVENT': {
+          return (
+            <WorkflowEditActionCreateCalendarEvent
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'CREATE_RECORD': {
+          return (
+            <WorkflowEditActionCreateRecord
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+
+        case 'UPDATE_RECORD': {
+          return (
+            <WorkflowEditActionUpdateRecord
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+
+        case 'DELETE_RECORD': {
+          return (
+            <WorkflowEditActionDeleteRecord
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+
+        case 'FIND_RECORDS': {
+          return (
+            <WorkflowEditActionFindRecords
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+
+        case 'UPSERT_RECORD': {
+          return (
+            <WorkflowEditActionUpsertRecord
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+
+        case 'PICK_RECORD': {
+          return (
+            <WorkflowEditActionPickRecord
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+
+        case 'FORM': {
+          return (
+            <WorkflowEditActionFormFiller
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly:
+                  stepExecutionStatus !== 'PENDING' &&
+                  stepExecutionStatus !== 'RUNNING',
+              }}
+            />
+          );
+        }
+
+        case 'HTTP_REQUEST': {
+          return (
+            <WorkflowEditActionHttpRequest
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'AI_AGENT': {
+          return (
+            <WorkflowEditActionAiAgent
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'FILTER': {
+          return (
+            <WorkflowEditActionFilter
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'IF_ELSE': {
+          return (
+            <WorkflowEditActionIfElse
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'ITERATOR': {
+          return (
+            <WorkflowEditActionIterator
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'EMPTY': {
+          return (
+            <WorkflowEditActionEmpty
+              key={stepId}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'DELAY': {
+          return (
+            <WorkflowEditActionDelay
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
       }
     }
   }
 
-  return assertUnreachable(stepDefinition, `Expected the step to have an handler; ${JSON.stringify(stepDefinition)}`);
+  return assertUnreachable(
+    stepDefinition,
+    `Expected the step to have an handler; ${JSON.stringify(stepDefinition)}`,
+  );
 };

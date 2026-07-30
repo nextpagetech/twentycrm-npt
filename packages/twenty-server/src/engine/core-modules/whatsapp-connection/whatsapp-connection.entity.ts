@@ -54,7 +54,7 @@ export class WhatsAppConnectionEntity extends WorkspaceRelatedEntity {
   @Column({ type: 'varchar', nullable: false })
   apiVersion: string;
 
-  @Field()
+  @Field(() => String)
   @Column({ type: 'varchar', nullable: false, default: 'PENDING' })
   status: WhatsAppConnectionStatus;
 

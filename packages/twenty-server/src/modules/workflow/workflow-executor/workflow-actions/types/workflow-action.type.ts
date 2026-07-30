@@ -22,11 +22,14 @@ import {
 import { type WorkflowActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/types/workflow-action-settings.type';
 import { type WorkflowSendWhatsAppMessageActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/whatsapp/types/workflow-send-whatsapp-message-action-settings.type';
 
-type BaseWorkflowAction = {
+type BaseWorkflowAction<
+  TType extends WorkflowActionType,
+  TSettings extends WorkflowActionSettings,
+> = {
   id: string;
   name: string;
-  type: WorkflowActionType;
-  settings: WorkflowActionSettings;
+  type: TType;
+  settings: TSettings;
   position?: {
     x: number;
     y: number;
@@ -35,109 +38,111 @@ type BaseWorkflowAction = {
   nextStepIds?: string[];
 };
 
-export type WorkflowCodeAction = BaseWorkflowAction & {
-  type: WorkflowActionType.CODE;
-  settings: WorkflowCodeActionSettings;
-};
+export type WorkflowCodeAction = BaseWorkflowAction<
+  WorkflowActionType.CODE,
+  WorkflowCodeActionSettings
+>;
 
-export type WorkflowLogicFunctionAction = BaseWorkflowAction & {
-  type: WorkflowActionType.LOGIC_FUNCTION;
-  settings: WorkflowLogicFunctionActionSettings;
-};
+export type WorkflowLogicFunctionAction = BaseWorkflowAction<
+  WorkflowActionType.LOGIC_FUNCTION,
+  WorkflowLogicFunctionActionSettings
+>;
 
-export type WorkflowSendEmailAction = BaseWorkflowAction & {
-  type: WorkflowActionType.SEND_EMAIL;
-  settings: WorkflowSendEmailActionSettings;
-};
+export type WorkflowSendEmailAction = BaseWorkflowAction<
+  WorkflowActionType.SEND_EMAIL,
+  WorkflowSendEmailActionSettings
+>;
 
-export type WorkflowSendWhatsAppMessageAction = BaseWorkflowAction & {
-  type: WorkflowActionType.SEND_WHATSAPP_MESSAGE;
-  settings: WorkflowSendWhatsAppMessageActionSettings;
-};
+export type WorkflowSendWhatsAppMessageAction = BaseWorkflowAction<
+  WorkflowActionType.SEND_WHATSAPP_MESSAGE,
+  WorkflowSendWhatsAppMessageActionSettings
+>;
 
-export type WorkflowDraftEmailAction = BaseWorkflowAction & {
-  type: WorkflowActionType.DRAFT_EMAIL;
-  settings: WorkflowSendEmailActionSettings;
-};
+export type WorkflowDraftEmailAction = BaseWorkflowAction<
+  WorkflowActionType.DRAFT_EMAIL,
+  WorkflowSendEmailActionSettings
+>;
 
-export type WorkflowCreateCalendarEventAction = BaseWorkflowAction & {
-  type: WorkflowActionType.CREATE_CALENDAR_EVENT;
-  settings: WorkflowCreateCalendarEventActionSettings;
-};
+export type WorkflowCreateCalendarEventAction = BaseWorkflowAction<
+  WorkflowActionType.CREATE_CALENDAR_EVENT,
+  WorkflowCreateCalendarEventActionSettings
+>;
 
-export type WorkflowCreateRecordAction = BaseWorkflowAction & {
-  type: WorkflowActionType.CREATE_RECORD;
-  settings: WorkflowCreateRecordActionSettings;
-};
+export type WorkflowCreateRecordAction = BaseWorkflowAction<
+  WorkflowActionType.CREATE_RECORD,
+  WorkflowCreateRecordActionSettings
+>;
 
-export type WorkflowUpdateRecordAction = BaseWorkflowAction & {
-  type: WorkflowActionType.UPDATE_RECORD;
-  settings: WorkflowUpdateRecordActionSettings;
-};
+export type WorkflowUpdateRecordAction = BaseWorkflowAction<
+  WorkflowActionType.UPDATE_RECORD,
+  WorkflowUpdateRecordActionSettings
+>;
 
-export type WorkflowDeleteRecordAction = BaseWorkflowAction & {
-  type: WorkflowActionType.DELETE_RECORD;
-  settings: WorkflowDeleteRecordActionSettings;
-};
+export type WorkflowDeleteRecordAction = BaseWorkflowAction<
+  WorkflowActionType.DELETE_RECORD,
+  WorkflowDeleteRecordActionSettings
+>;
 
-export type WorkflowUpsertRecordAction = BaseWorkflowAction & {
-  type: WorkflowActionType.UPSERT_RECORD;
-  settings: WorkflowUpsertRecordActionSettings;
-};
+export type WorkflowUpsertRecordAction = BaseWorkflowAction<
+  WorkflowActionType.UPSERT_RECORD,
+  WorkflowUpsertRecordActionSettings
+>;
 
-export type WorkflowFindRecordsAction = BaseWorkflowAction & {
-  type: WorkflowActionType.FIND_RECORDS;
-  settings: WorkflowFindRecordsActionSettings;
-};
+export type WorkflowFindRecordsAction = BaseWorkflowAction<
+  WorkflowActionType.FIND_RECORDS,
+  WorkflowFindRecordsActionSettings
+>;
 
-export type WorkflowPickRecordAction = BaseWorkflowAction & {
-  type: WorkflowActionType.PICK_RECORD;
-  settings: WorkflowPickRecordActionSettings;
-};
+export type WorkflowPickRecordAction = BaseWorkflowAction<
+  WorkflowActionType.PICK_RECORD,
+  WorkflowPickRecordActionSettings
+>;
 
-export type WorkflowFormAction = BaseWorkflowAction & {
-  type: WorkflowActionType.FORM;
-  settings: WorkflowFormActionSettings;
-};
+export type WorkflowFormAction = BaseWorkflowAction<
+  WorkflowActionType.FORM,
+  WorkflowFormActionSettings
+>;
 
-export type WorkflowFilterAction = BaseWorkflowAction & {
-  type: WorkflowActionType.FILTER;
-  settings: WorkflowFilterActionSettings;
-};
+export type WorkflowFilterAction = BaseWorkflowAction<
+  WorkflowActionType.FILTER,
+  WorkflowFilterActionSettings
+>;
 
-export type WorkflowIfElseAction = BaseWorkflowAction & {
-  type: WorkflowActionType.IF_ELSE;
-  settings: WorkflowIfElseActionSettings;
-};
+export type WorkflowIfElseAction = BaseWorkflowAction<
+  WorkflowActionType.IF_ELSE,
+  WorkflowIfElseActionSettings
+>;
 
-export type WorkflowHttpRequestAction = BaseWorkflowAction & {
-  type: WorkflowActionType.HTTP_REQUEST;
-  settings: WorkflowHttpRequestActionSettings;
-};
+export type WorkflowHttpRequestAction = BaseWorkflowAction<
+  WorkflowActionType.HTTP_REQUEST,
+  WorkflowHttpRequestActionSettings
+>;
 
-export type WorkflowAiAgentAction = BaseWorkflowAction & {
-  type: WorkflowActionType.AI_AGENT;
-  settings: WorkflowAiAgentActionSettings;
-};
+export type WorkflowAiAgentAction = BaseWorkflowAction<
+  WorkflowActionType.AI_AGENT,
+  WorkflowAiAgentActionSettings
+>;
 
-export type WorkflowIteratorAction = BaseWorkflowAction & {
-  type: WorkflowActionType.ITERATOR;
-  settings: WorkflowIteratorActionSettings;
-};
+export type WorkflowIteratorAction = BaseWorkflowAction<
+  WorkflowActionType.ITERATOR,
+  WorkflowIteratorActionSettings
+>;
 
-export type WorkflowEmptyAction = BaseWorkflowAction & {
-  type: WorkflowActionType.EMPTY;
-};
+export type WorkflowEmptyAction = BaseWorkflowAction<
+  WorkflowActionType.EMPTY,
+  WorkflowActionSettings
+>;
 
-export type WorkflowDelayAction = BaseWorkflowAction & {
-  type: WorkflowActionType.DELAY;
-  settings: WorkflowDelayActionSettings;
-};
+export type WorkflowDelayAction = BaseWorkflowAction<
+  WorkflowActionType.DELAY,
+  WorkflowDelayActionSettings
+>;
 
-type CoreWorkflowAction =
+export type WorkflowAction =
   | WorkflowCodeAction
   | WorkflowLogicFunctionAction
   | WorkflowSendEmailAction
+  | WorkflowSendWhatsAppMessageAction
   | WorkflowDraftEmailAction
   | WorkflowCreateCalendarEventAction
   | WorkflowCreateRecordAction
@@ -154,7 +159,3 @@ type CoreWorkflowAction =
   | WorkflowIteratorAction
   | WorkflowEmptyAction
   | WorkflowDelayAction;
-
-export type WorkflowAction =
-  | CoreWorkflowAction
-  | WorkflowSendWhatsAppMessageAction;

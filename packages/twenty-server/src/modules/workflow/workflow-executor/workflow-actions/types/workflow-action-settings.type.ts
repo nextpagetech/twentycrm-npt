@@ -21,7 +21,6 @@ import {
 import { type WorkflowSendWhatsAppMessageActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/whatsapp/types/workflow-send-whatsapp-message-action-settings.type';
 
 export type BaseWorkflowActionSettings = {
-  input?: unknown;
   outputSchema: OutputSchema;
   errorHandlingOptions: {
     retryOnFailure: {

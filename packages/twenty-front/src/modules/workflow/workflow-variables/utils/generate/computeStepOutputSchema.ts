@@ -138,7 +138,6 @@ export const computeStepOutputSchema = ({
           };
         }
 
-        // BULK_RECORDS - array indicator nested under payload
         return {
           [WORKFLOW_TRIGGER_PAYLOAD_KEY]: {
             isLeaf: false,
@@ -160,9 +159,8 @@ export const computeStepOutputSchema = ({
       return {};
     }
 
-    case 'CRON': {
+    case 'CRON':
       return {};
-    }
 
     case 'CREATE_RECORD':
     case 'UPDATE_RECORD':
@@ -247,6 +245,41 @@ export const computeStepOutputSchema = ({
       };
     }
 
+    case 'SEND_WHATSAPP_MESSAGE': {
+      return {
+        success: {
+          isLeaf: true,
+          type: FieldMetadataType.BOOLEAN,
+          label: 'Success',
+          value: true,
+        },
+        messageId: {
+          isLeaf: true,
+          type: FieldMetadataType.TEXT,
+          label: 'Meta message ID',
+          value: '',
+        },
+        recipientPhoneNumber: {
+          isLeaf: true,
+          type: FieldMetadataType.TEXT,
+          label: 'Recipient phone number',
+          value: '',
+        },
+        messageType: {
+          isLeaf: true,
+          type: FieldMetadataType.TEXT,
+          label: 'Message type',
+          value: 'TEXT',
+        },
+        connectionId: {
+          isLeaf: true,
+          type: FieldMetadataType.TEXT,
+          label: 'WhatsApp connection ID',
+          value: '',
+        },
+      };
+    }
+
     case 'DRAFT_EMAIL': {
       return {
         success: {
@@ -289,13 +322,11 @@ export const computeStepOutputSchema = ({
 
     case 'FILTER':
     case 'DELAY':
-    case 'EMPTY': {
+    case 'EMPTY':
       return {};
-    }
 
-    default: {
+    default:
       return {};
-    }
   }
 };
 

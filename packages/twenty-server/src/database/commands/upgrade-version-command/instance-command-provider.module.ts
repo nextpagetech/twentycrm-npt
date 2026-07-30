@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 
-import { CreateWhatsAppConnectionCoreTableFastInstanceCommand } from 'src/database/commands/upgrade-version-command/2-25/2-25-instance-command-fast-1785396600000-create-whatsapp-connection-core-table';
 import { INSTANCE_COMMANDS } from 'src/database/commands/upgrade-version-command/instance-commands.constant';
 import { JwtModule } from 'src/engine/core-modules/jwt/jwt.module';
 import { SecretEncryptionModule } from 'src/engine/core-modules/secret-encryption/secret-encryption.module';
@@ -16,10 +15,6 @@ import { ConnectedAccountTokenEncryptionModule } from 'src/engine/metadata-modul
     // is retired.
     JwtModule,
   ],
-  providers: [
-    ...INSTANCE_COMMANDS,
-    CreateWhatsAppConnectionCoreTableFastInstanceCommand,
-    SimpleSecretEncryptionUtil,
-  ],
+  providers: [...INSTANCE_COMMANDS, SimpleSecretEncryptionUtil],
 })
 export class InstanceCommandProviderModule {}

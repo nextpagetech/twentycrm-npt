@@ -43,7 +43,7 @@ export class WhatsAppConnectionEntity extends WorkspaceRelatedEntity {
   @Column({ type: 'varchar', nullable: false })
   whatsAppBusinessAccountId: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @Column({ type: 'varchar', nullable: true })
   displayPhoneNumber: string | null;
 

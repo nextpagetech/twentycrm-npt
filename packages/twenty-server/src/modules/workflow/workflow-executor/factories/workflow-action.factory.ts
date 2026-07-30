@@ -1,20 +1,21 @@
 import { Injectable } from '@nestjs/common';
 
-import { type WorkflowAction } from 'src/modules/workflow/workflow-executor/interfaces/workflow-action.interface';
+import { WorkflowActionType } from 'twenty-shared/workflow';
 
 import {
   WorkflowStepExecutorException,
   WorkflowStepExecutorExceptionCode,
 } from 'src/modules/workflow/workflow-executor/exceptions/workflow-step-executor.exception';
+import { type WorkflowAction } from 'src/modules/workflow/workflow-executor/interfaces/workflow-action.interface';
 import { AiAgentWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/ai-agent/ai-agent.workflow-action';
 import { CodeWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/code/code.workflow-action';
+import { CreateCalendarEventWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/create-calendar-event/create-calendar-event.workflow-action';
 import { DelayWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/delay/delay.workflow-action';
 import { EmptyWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/empty/empty.workflow-action';
 import { FilterWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/filter/filter.workflow-action';
 import { FormWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/form/form.workflow-action';
 import { HttpRequestWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/http-request/http-request.workflow-action';
 import { IfElseWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/if-else/if-else.workflow-action';
-import { CreateCalendarEventWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/create-calendar-event/create-calendar-event.workflow-action';
 import { IteratorWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/iterator/iterator.workflow-action';
 import { LogicFunctionWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/logic-function/logic-function.workflow-action';
 import { DraftEmailWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/mail-sender/draft-email.workflow-action';
@@ -25,7 +26,7 @@ import { FindRecordsWorkflowAction } from 'src/modules/workflow/workflow-executo
 import { PickRecordWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/record-crud/pick-record.workflow-action';
 import { UpdateRecordWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/record-crud/update-record.workflow-action';
 import { UpsertRecordWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/record-crud/upsert-record.workflow-action';
-import { WorkflowActionType } from 'twenty-shared/workflow';
+import { SendWhatsAppMessageWorkflowAction } from 'src/modules/workflow/workflow-executor/workflow-actions/whatsapp/send-whatsapp-message.workflow-action';
 
 @Injectable()
 export class WorkflowActionFactory {
@@ -44,6 +45,7 @@ export class WorkflowActionFactory {
     private readonly iteratorWorkflowAction: IteratorWorkflowAction,
     private readonly httpRequestWorkflowAction: HttpRequestWorkflowAction,
     private readonly sendEmailWorkflowAction: SendEmailWorkflowAction,
+    private readonly sendWhatsAppMessageWorkflowAction: SendWhatsAppMessageWorkflowAction,
     private readonly draftEmailWorkflowAction: DraftEmailWorkflowAction,
     private readonly createCalendarEventWorkflowAction: CreateCalendarEventWorkflowAction,
     private readonly aiAgentWorkflowAction: AiAgentWorkflowAction,
@@ -59,6 +61,8 @@ export class WorkflowActionFactory {
         return this.logicFunctionWorkflowAction;
       case WorkflowActionType.SEND_EMAIL:
         return this.sendEmailWorkflowAction;
+      case WorkflowActionType.SEND_WHATSAPP_MESSAGE:
+        return this.sendWhatsAppMessageWorkflowAction;
       case WorkflowActionType.DRAFT_EMAIL:
         return this.draftEmailWorkflowAction;
       case WorkflowActionType.CREATE_CALENDAR_EVENT:

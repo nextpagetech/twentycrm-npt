@@ -24,10 +24,10 @@ export class CreateWhatsAppConnectionCoreTableFastInstanceCommand
         "archivedAt" TIMESTAMP WITH TIME ZONE,
         "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
         "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
-        CONSTRAINT "PK_whatsAppConnection_id" PRIMARY KEY ("id"),
+        CONSTRAINT "PK_f8cddcc9e83bf9a9523ffe5f014" PRIMARY KEY ("id"),
         CONSTRAINT "CHK_whatsAppConnection_accessToken_encrypted"
           CHECK ("accessToken" LIKE 'enc:v2:%'),
-        CONSTRAINT "FK_whatsAppConnection_workspaceId"
+        CONSTRAINT "FK_0a2f3a6fbacc7f120b0b9b2335e"
           FOREIGN KEY ("workspaceId") REFERENCES "core"."workspace"("id") ON DELETE CASCADE
       )`,
     );

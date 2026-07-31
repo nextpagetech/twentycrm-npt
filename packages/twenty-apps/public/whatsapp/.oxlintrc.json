@@ -1,0 +1,7 @@
+{
+  "extends": ["../../../../.oxlintrc.json"],
+  "ignorePatterns": ["dist/**"],
+  "rules": {
+    "import/no-default-export": "off"
+  }
+}

@@ -26,6 +26,7 @@ import {
   type workflowRunStatusSchema,
   type workflowRunStepStatusSchema,
   type workflowSendEmailActionSchema,
+  type workflowSendWhatsAppMessageActionSchema,
   type workflowTriggerSchema,
   type workflowUpdateRecordActionSchema,
   type workflowUpsertRecordActionSchema,
@@ -39,6 +40,9 @@ export type WorkflowLogicFunctionAction = z.infer<
 >;
 export type WorkflowSendEmailAction = z.infer<
   typeof workflowSendEmailActionSchema
+>;
+export type WorkflowSendWhatsAppMessageAction = z.infer<
+  typeof workflowSendWhatsAppMessageActionSchema
 >;
 export type WorkflowDraftEmailAction = z.infer<
   typeof workflowDraftEmailActionSchema
@@ -81,6 +85,7 @@ export type WorkflowAction =
   | WorkflowCodeAction
   | WorkflowLogicFunctionAction
   | WorkflowSendEmailAction
+  | WorkflowSendWhatsAppMessageAction
   | WorkflowDraftEmailAction
   | WorkflowCreateCalendarEventAction
   | WorkflowCreateRecordAction

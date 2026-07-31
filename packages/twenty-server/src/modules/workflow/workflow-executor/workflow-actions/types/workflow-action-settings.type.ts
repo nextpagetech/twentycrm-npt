@@ -18,6 +18,7 @@ import {
   type WorkflowUpdateRecordActionSettings,
   type WorkflowUpsertRecordActionSettings,
 } from 'src/modules/workflow/workflow-executor/workflow-actions/record-crud/types/workflow-record-crud-action-settings.type';
+import { type WorkflowSendWhatsAppMessageActionSettings } from 'src/modules/workflow/workflow-executor/workflow-actions/whatsapp/types/workflow-send-whatsapp-message-action-settings.type';
 
 export type BaseWorkflowActionSettings = {
   outputSchema: OutputSchema;
@@ -38,6 +39,7 @@ export type WithExpectedOutputSchema = {
 export type WorkflowActionSettings =
   | WorkflowLogicFunctionActionSettings
   | WorkflowSendEmailActionSettings
+  | WorkflowSendWhatsAppMessageActionSettings
   | WorkflowCreateCalendarEventActionSettings
   | WorkflowCodeActionSettings
   | WorkflowCreateRecordActionSettings

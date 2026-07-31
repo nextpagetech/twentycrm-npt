@@ -1,10 +1,13 @@
 import { styled } from '@linaria/react';
 import { useLingui } from '@lingui/react/macro';
+import { useContext, useState } from 'react';
 
-import { SettingsPageContainer } from '@/settings/components/SettingsPageContainer';
+import { SettingsCard } from '@/settings/components/SettingsCard';
 import { SettingsDiscoveryHeroCard } from '@/settings/components/SettingsDiscoveryHeroCard';
-import { SettingsWorkspaceEmailGroupSection } from '@/settings/workspace/components/SettingsWorkspaceEmailGroupSection';
+import { SettingsPageContainer } from '@/settings/components/SettingsPageContainer';
 import { SettingsPageLayout } from '@/settings/components/layout/SettingsPageLayout';
+import { SettingsWorkspaceEmailGroupSection } from '@/settings/workspace/components/SettingsWorkspaceEmailGroupSection';
+import { SettingsWorkspaceWhatsAppSection } from '@/settings/workspace/components/SettingsWorkspaceWhatsAppSection';
 import { TabList } from '@/ui/layout/tab-list/components/TabList';
 import { useIsFeatureEnabled } from '@/workspace/hooks/useIsFeatureEnabled';
 import { FeatureFlagKey, SettingsPath } from 'twenty-shared/types';
@@ -15,14 +18,12 @@ import {
   IconMailX,
   IconPhone,
 } from 'twenty-ui/icon';
-import { H2Title } from 'twenty-ui/typography';
 import { Section } from 'twenty-ui/layout';
+import { ThemeContext, themeCssVariables } from 'twenty-ui/theme-constants';
+import { H2Title } from 'twenty-ui/typography';
+import { useNavigateSettings } from '~/hooks/useNavigateSettings';
 import coverDark from '~/pages/settings/communications/assets/cover-dark.png';
 import coverLight from '~/pages/settings/communications/assets/cover-light.png';
-import { SettingsCard } from '@/settings/components/SettingsCard';
-import { useContext } from 'react';
-import { ThemeContext, themeCssVariables } from 'twenty-ui/theme-constants';
-import { useNavigateSettings } from '~/hooks/useNavigateSettings';
 
 const COMMUNICATIONS_TABS_INSTANCE_ID = 'settings-communications-tabs';
 
@@ -34,18 +35,13 @@ const StyledCardsColumn = styled.div`
 
 export const SettingsWorkspaceCommunications = () => {
   const { theme } = useContext(ThemeContext);
-
   const { t } = useLingui();
-
   const navigateSettings = useNavigateSettings();
+  const [activeTabId, setActiveTabId] = useState('emails');
 
   const isEmailGroupFeatureEnabled = useIsFeatureEnabled(
     FeatureFlagKey.IS_EMAIL_GROUP_ENABLED,
   );
-
-  if (!isEmailGroupFeatureEnabled) {
-    return null;
-  }
 
   return (
     <SettingsPageLayout
@@ -61,14 +57,13 @@ export const SettingsWorkspaceCommunications = () => {
       <SettingsPageContainer>
         <TabList
           componentInstanceId={COMMUNICATIONS_TABS_INSTANCE_ID}
+          onChangeTab={setActiveTabId}
           tabs={[
             { id: 'emails', title: t`Emails`, Icon: IconMail },
             {
               id: 'whatsapp',
-              title: t`Whatsapp`,
+              title: t`WhatsApp`,
               Icon: IconBrandWhatsapp,
-              disabled: true,
-              pill: t`Soon`,
             },
             {
               id: 'calls',
@@ -79,33 +74,40 @@ export const SettingsWorkspaceCommunications = () => {
             },
           ]}
         />
-        <Section>
-          <SettingsDiscoveryHeroCard
-            lightSrc={coverLight}
-            darkSrc={coverDark}
-            instanceIdPrefix="settings-communications-hero"
-            tabs={[]}
-          />
-        </Section>
-        <SettingsWorkspaceEmailGroupSection />
-        <Section>
-          <H2Title
-            title={t`Unsubscribe`}
-            description={t`Manage unsubscribers, opt-out topics, and the page recipients see`}
-          />
-          <StyledCardsColumn>
-            <SettingsCard
-              Icon={
-                <IconMailX
-                  size={theme.icon.size.lg}
-                  stroke={theme.icon.stroke.md}
+
+        {activeTabId === 'whatsapp' && <SettingsWorkspaceWhatsAppSection />}
+
+        {activeTabId === 'emails' && isEmailGroupFeatureEnabled && (
+          <>
+            <Section>
+              <SettingsDiscoveryHeroCard
+                lightSrc={coverLight}
+                darkSrc={coverDark}
+                instanceIdPrefix="settings-communications-hero"
+                tabs={[]}
+              />
+            </Section>
+            <SettingsWorkspaceEmailGroupSection />
+            <Section>
+              <H2Title
+                title={t`Unsubscribe`}
+                description={t`Manage unsubscribers, opt-out topics, and the page recipients see`}
+              />
+              <StyledCardsColumn>
+                <SettingsCard
+                  Icon={
+                    <IconMailX
+                      size={theme.icon.size.lg}
+                      stroke={theme.icon.stroke.md}
+                    />
+                  }
+                  title={t`Manage unsubscribe`}
+                  onClick={() => navigateSettings(SettingsPath.Unsubscribe)}
                 />
-              }
-              title={t`Manage unsubscribe`}
-              onClick={() => navigateSettings(SettingsPath.Unsubscribe)}
-            />
-          </StyledCardsColumn>
-        </Section>
+              </StyledCardsColumn>
+            </Section>
+          </>
+        )}
       </SettingsPageContainer>
     </SettingsPageLayout>
   );

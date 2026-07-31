@@ -22,6 +22,7 @@ import { WorkflowEditActionIfElse } from '@/workflow/workflow-steps/workflow-act
 import { WorkflowEditActionIterator } from '@/workflow/workflow-steps/workflow-actions/iterator-action/components/WorkflowEditActionIterator';
 import { WorkflowEditActionPickRecord } from '@/workflow/workflow-steps/workflow-actions/pick-record-action/components/WorkflowEditActionPickRecord';
 import { WorkflowEditActionLogicFunction } from '@/workflow/workflow-steps/workflow-actions/logic-function-action/components/WorkflowEditActionLogicFunction';
+import { WorkflowEditActionSendWhatsAppMessage } from '@/workflow/workflow-steps/workflow-actions/whatsapp-action/components/WorkflowEditActionSendWhatsAppMessage';
 import { WorkflowEditTriggerCronForm } from '@/workflow/workflow-trigger/components/WorkflowEditTriggerCronForm';
 import { WorkflowEditTriggerDatabaseEventForm } from '@/workflow/workflow-trigger/components/WorkflowEditTriggerDatabaseEventForm';
 import { WorkflowEditTriggerManual } from '@/workflow/workflow-trigger/components/WorkflowEditTriggerManual';
@@ -133,6 +134,17 @@ export const WorkflowRunStepNodeDetail = ({
         case 'DRAFT_EMAIL': {
           return (
             <WorkflowEditActionEmailBase
+              key={stepId}
+              action={stepDefinition.definition}
+              actionOptions={{
+                readonly: true,
+              }}
+            />
+          );
+        }
+        case 'SEND_WHATSAPP_MESSAGE': {
+          return (
+            <WorkflowEditActionSendWhatsAppMessage
               key={stepId}
               action={stepDefinition.definition}
               actionOptions={{

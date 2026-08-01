@@ -20,10 +20,16 @@ export default defineLogicFunction({
         type: 'object',
         properties: {
           success: { type: 'boolean' },
+          acceptedByMeta: { type: 'boolean' },
           operation: { type: 'string' },
           messageId: { type: 'string' },
           recipientPhoneNumber: { type: 'string' },
           providerStatus: { type: 'string' },
+          templateName: { type: 'string' },
+          errorCode: { type: 'string' },
+          errorMessage: { type: 'string' },
+          httpStatus: { type: 'number' },
+          retryable: { type: 'boolean' },
           kind: { type: 'string' },
           command: { type: 'string' },
           items: {

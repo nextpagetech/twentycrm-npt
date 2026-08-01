@@ -14,7 +14,7 @@ export const whatsappNodeInputSchema: InputJsonSchema = {
       type: 'string',
       label: 'Recipient phone number',
       description:
-        'Required for send operations. Include country code, for example 919876543210.',
+        'Required for send operations. Supports a complete phone value or a phone-field object containing primaryPhoneNumber.',
     },
     messageBody: {
       type: 'string',
@@ -35,13 +35,53 @@ export const whatsappNodeInputSchema: InputJsonSchema = {
     languageCode: {
       type: 'string',
       label: 'Template language code',
-      description: 'For example en_US.',
+      description: 'Exact language code from Meta, for example en_US or en.',
+    },
+    templateHeaderParameters: {
+      type: 'array',
+      label: 'Template header parameters',
+      items: { type: 'string' },
+      description:
+        'Ordered text parameters for a template header. Leave empty when the header has no variables.',
     },
     templateBodyParameters: {
       type: 'array',
       label: 'Template body parameters',
       items: { type: 'string' },
-      description: 'Ordered text parameters for the template body.',
+      description:
+        'Ordered values for the template body. Numbers and booleans are converted to text automatically.',
+    },
+    templateButtonSubType: {
+      type: 'string',
+      label: 'Template button subtype',
+      enum: ['URL', 'QUICK_REPLY'],
+      description:
+        'Use URL for dynamic URL, copy-code, or OTP buttons. Use QUICK_REPLY for quick-reply buttons.',
+    },
+    templateButtonIndex: {
+      type: 'integer',
+      label: 'Template button index',
+      description: 'Zero-based button position. The first button is 0.',
+    },
+    templateButtonParameterType: {
+      type: 'string',
+      label: 'Template button parameter type',
+      enum: ['TEXT', 'PAYLOAD'],
+      description:
+        'URL buttons require TEXT. QUICK_REPLY buttons require PAYLOAD.',
+    },
+    templateButtonParameters: {
+      type: 'array',
+      label: 'Template button parameters',
+      items: { type: 'string' },
+      description:
+        'Ordered values required by the selected template button. For OTP copy-code/autofill templates, enter the OTP here as well as in the body parameters.',
+    },
+    continueOnError: {
+      type: 'boolean',
+      label: 'Continue workflow on error',
+      description:
+        'Return success=false and error details instead of stopping the workflow when validation or Meta sending fails.',
     },
     incomingMessage: {
       type: 'string',

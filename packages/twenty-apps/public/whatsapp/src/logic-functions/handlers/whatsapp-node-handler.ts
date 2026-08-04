@@ -5,12 +5,12 @@ type WhatsAppNodeInput = {
   previewUrl?: boolean;
   templateName?: unknown;
   languageCode?: unknown;
-  templateHeaderParameters?: unknown[];
-  templateBodyParameters?: unknown[];
+  templateHeaderParameters?: unknown;
+  templateBodyParameters?: unknown;
   templateButtonSubType?: 'URL' | 'QUICK_REPLY';
   templateButtonIndex?: unknown;
   templateButtonParameterType?: 'TEXT' | 'PAYLOAD';
-  templateButtonParameters?: unknown[];
+  templateButtonParameters?: unknown;
   continueOnError?: boolean;
   incomingMessage?: string;
 };
@@ -75,13 +75,12 @@ const normalizeParameterArray = (
   label: string,
 ): string[] => {
   if (value === undefined || value === null) return [];
-  if (!Array.isArray(value)) {
-    throw new WhatsAppNodeError(`${label} must be a list`, {
-      errorCode: 'INVALID_TEMPLATE_PARAMETERS',
-    });
-  }
 
-  return value.map((item, index) =>
+  // Twenty can resolve a single dynamic chip as a scalar even when the
+  // workflow field is configured as an array. Treat it as a one-item list.
+  const values = Array.isArray(value) ? value : [value];
+
+  return values.map((item, index) =>
     normalizeScalarValue(
       item,
       `${label} ${index + 1}`,

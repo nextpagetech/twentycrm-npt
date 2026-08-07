@@ -1,8 +1,18 @@
 # Twenty WhatsApp Workflow App
 
-An open-source WhatsApp Cloud API integration for [Twenty CRM](https://github.com/twentyhq/twenty), maintained by [NextPageTech](https://github.com/nextpagetech).
+An open-source WhatsApp Cloud API integration for [Twenty CRM](https://github.com/twentyhq/twenty), developed and maintained by [Next Page Technologies](https://nextpagetechnologies.com).
 
 It adds a native **WhatsApp** workflow action to Twenty for sending text messages, sending Meta-approved template messages, and parsing simple incoming order commands.
+
+| Metadata | Value |
+| --- | --- |
+| Package | `@nextpagetech/twenty-whatsapp` |
+| Version | `0.1.0` |
+| Author | Next Page Technologies |
+| Website | [nextpagetechnologies.com](https://nextpagetechnologies.com) |
+| Repository | [nextpagetech/twentycrm-npt](https://github.com/nextpagetech/twentycrm-npt) |
+| Issues | [GitHub Issues](https://github.com/nextpagetech/twentycrm-npt/issues) |
+| Support | [support@nextpagetech.com](mailto:support@nextpagetech.com) |
 
 ## Features
 
@@ -143,4 +153,4 @@ A successful API response means Meta accepted the request. It does not guarantee
 
 The WhatsApp app package declares the MIT license in its `package.json`. The surrounding Twenty CRM repository retains Twenty's original licensing terms, including AGPL-3.0 coverage and separately marked enterprise files. Refer to the repository's root `LICENSE` before redistributing the complete CRM.
 
-Twenty CRM is developed by [Twenty](https://github.com/twentyhq/twenty). This integration is maintained independently by NextPageTech and is not presented as an official Twenty or Meta product.
+Twenty CRM is developed by [Twenty](https://github.com/twentyhq/twenty). This integration is maintained independently by [Next Page Technologies](https://nextpagetechnologies.com) and is not presented as an official Twenty or Meta product.

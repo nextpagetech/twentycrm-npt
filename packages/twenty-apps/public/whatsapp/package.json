@@ -3,10 +3,24 @@
   "version": "0.1.0",
   "description": "WhatsApp Cloud API workflow node for Twenty CRM",
   "license": "MIT",
+  "author": {
+    "name": "Next Page Technologies",
+    "url": "https://nextpagetechnologies.com"
+  },
+  "homepage": "https://nextpagetechnologies.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nextpagetech/twentycrm-npt.git",
+    "directory": "packages/twenty-apps/public/whatsapp"
+  },
+  "bugs": {
+    "url": "https://github.com/nextpagetech/twentycrm-npt/issues"
+  },
   "engines": {
     "node": "^24.5.0",
     "npm": "please-use-yarn",
-    "yarn": ">=4.0.2"
+    "yarn": ">=4.0.2",
+    "twenty": ">=2.16.0"
   },
   "keywords": [
     "twenty-app",

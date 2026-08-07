@@ -12,9 +12,11 @@ export default defineApplication({
   displayName: 'Twenty WhatsApp',
   description:
     'A native WhatsApp workflow node for sending text or approved template messages and parsing simple order commands.',
-  author: 'NextPageTech',
+  author: 'Next Page Technologies',
   category: 'Communication',
-  websiteUrl: 'https://developers.facebook.com/docs/whatsapp/cloud-api',
+  websiteUrl: 'https://nextpagetechnologies.com',
+  issueReportUrl:
+    'https://github.com/nextpagetech/twentycrm-npt/issues',
   emailSupport: 'support@nextpagetech.com',
   applicationVariables: {
     WHATSAPP_ACCESS_TOKEN: {

@@ -1,0 +1,50 @@
+name: New WhatsApp provider
+about: Propose support for Twilio, 360dialog, Gupshup or another WhatsApp provider
+labels: ["provider", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to propose a new WhatsApp provider. Do not include API keys, access tokens, customer data or production phone numbers.
+  - type: input
+    id: provider
+    attributes:
+      label: Provider
+      description: Provider/service name.
+      placeholder: Twilio WhatsApp
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: Why is this provider needed and what capabilities are required?
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: Required capabilities
+      description: For example text, templates, media, multiple senders, delivery callbacks.
+    validations:
+      required: true
+  - type: textarea
+    id: docs
+    attributes:
+      label: Provider documentation
+      description: Link to official API documentation if available.
+  - type: dropdown
+    id: contribution
+    attributes:
+      label: Can you contribute an implementation?
+      options:
+        - "Yes"
+        - "Possibly"
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Add architecture or compatibility considerations. Never include secrets.

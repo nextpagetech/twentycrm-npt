@@ -41,10 +41,21 @@ The app currently supports the **Meta WhatsApp Cloud API** and adds a native Wha
 | 360dialog | Planned |
 | Gupshup | Planned |
 
+## Documentation
+
+- [Installation](docs/installation.md)
+- [Configuration](docs/configuration.md)
+- [Meta WhatsApp setup](docs/meta-whatsapp-setup.md)
+- [Workflow usage](docs/workflow-usage.md)
+- [Troubleshooting](docs/troubleshooting.md)
+- [Architecture](docs/architecture.md)
+- [Development](docs/development.md)
+- [Examples](examples/README.md)
+
 ## Requirements
 
 - Twenty CRM with app and logic-function support.
-- Twenty `>= 2.16.0`.
+- Twenty `>= 2.16.0` (declared compatibility floor; verify the exact deployed version before production use).
 - Node.js `24.5+`.
 - Yarn `4+`.
 - Meta developer account and WhatsApp Business application.
@@ -63,6 +74,8 @@ Configure these Twenty application variables:
 | `WHATSAPP_API_VERSION` | No | No | Meta Graph API version. Defaults to `v23.0`. |
 
 Never commit real tokens, customer phone numbers or production configuration.
+
+See [Configuration](docs/configuration.md) and [Meta WhatsApp setup](docs/meta-whatsapp-setup.md) for details.
 
 ## Local development
 
@@ -100,6 +113,8 @@ In Twenty:
 5. Map the recipient and message/template values.
 6. Test with a Meta test recipient.
 7. Activate the workflow after verifying the response.
+
+For complete field behavior and examples, see [Workflow usage](docs/workflow-usage.md) and [Examples](examples/README.md).
 
 ### SEND_TEXT
 
@@ -174,7 +189,7 @@ WhatsAppProvider interface
         +---- other providers (planned)
 ```
 
-Provider-specific payloads, response parsing and errors should remain inside provider implementations. The Twenty workflow contract should stay provider-neutral where practical.
+Provider-specific payloads, response parsing and errors should remain inside provider implementations. The Twenty workflow contract should stay provider-neutral where practical. See [Architecture](docs/architecture.md).
 
 ## Security
 
@@ -195,6 +210,8 @@ Provider-specific payloads, response parsing and errors should remain inside pro
 ## Contributing
 
 Contributions are welcome. Read `CONTRIBUTING.md` before opening a pull request. Good contribution areas include provider implementations, additional WhatsApp message types, tests, documentation and Twenty compatibility fixes.
+
+Provider proposals can use `.github/ISSUE_TEMPLATE/provider_request.yml` after this package becomes the standalone repository.
 
 ## Professional support & customization
 

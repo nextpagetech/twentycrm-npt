@@ -1,3 +1,12 @@
+/**
+ * WhatsApp Workflow for Twenty CRM
+ * Developed and maintained by Next Page Technologies Pvt. Ltd.
+ * Copyright (c) 2026 Next Page Technologies Pvt. Ltd.
+ * Website: https://www.nextpagetechnologies.com
+ * Support & Customization: hello@nextpagetechnologies.com
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 export const APPLICATION_UNIVERSAL_IDENTIFIER =
   '7d1a1a7f-55f7-46c0-a8e7-b444fb5a3439';
 

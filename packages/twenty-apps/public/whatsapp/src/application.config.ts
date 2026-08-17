@@ -1,3 +1,12 @@
+/**
+ * WhatsApp Workflow for Twenty CRM
+ * Developed and maintained by Next Page Technologies Pvt. Ltd.
+ * Copyright (c) 2026 Next Page Technologies Pvt. Ltd.
+ * Website: https://www.nextpagetechnologies.com
+ * Support & Customization: hello@nextpagetechnologies.com
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { defineApplication } from 'twenty-sdk/define';
 
 import {
@@ -9,15 +18,14 @@ import {
 
 export default defineApplication({
   universalIdentifier: APPLICATION_UNIVERSAL_IDENTIFIER,
-  displayName: 'Twenty WhatsApp',
+  displayName: 'WhatsApp for Twenty',
   description:
-    'A native WhatsApp workflow node for sending text or approved template messages and parsing simple order commands.',
-  author: 'Next Page Technologies',
+    'Open-source WhatsApp Business workflow actions for sending text and approved template messages.',
+  author: 'Next Page Technologies Pvt. Ltd.',
   category: 'Communication',
-  websiteUrl: 'https://nextpagetechnologies.com',
-  issueReportUrl:
-    'https://github.com/nextpagetech/twentycrm-npt/issues',
-  emailSupport: 'support@nextpagetech.com',
+  websiteUrl: 'https://www.nextpagetechnologies.com',
+  issueReportUrl: 'https://github.com/nextpagetech/twentycrm-npt/issues',
+  emailSupport: 'hello@nextpagetechnologies.com',
   applicationVariables: {
     WHATSAPP_ACCESS_TOKEN: {
       universalIdentifier: WHATSAPP_ACCESS_TOKEN_VARIABLE_UNIVERSAL_IDENTIFIER,

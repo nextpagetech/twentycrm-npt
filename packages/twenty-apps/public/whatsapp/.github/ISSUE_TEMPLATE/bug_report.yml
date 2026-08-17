@@ -1,0 +1,44 @@
+name: Bug report
+description: Report reproducible incorrect behavior
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Never include access tokens or customer-sensitive data."
+  - type: input
+    id: twenty-version
+    attributes:
+      label: Twenty version
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: WhatsApp app version
+    validations:
+      required: true
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Provider
+      options:
+        - Meta WhatsApp Cloud API
+    validations:
+      required: true
+  - type: dropdown
+    id: operation
+    attributes:
+      label: Operation
+      options:
+        - SEND_TEXT
+        - SEND_TEMPLATE
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Include steps to reproduce and sanitized errors.
+    validations:
+      required: true

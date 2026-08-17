@@ -1,3 +1,12 @@
+/**
+ * WhatsApp Workflow for Twenty CRM
+ * Developed and maintained by Next Page Technologies Pvt. Ltd.
+ * Copyright (c) 2026 Next Page Technologies Pvt. Ltd.
+ * Website: https://www.nextpagetechnologies.com
+ * Support & Customization: hello@nextpagetechnologies.com
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { defineLogicFunction } from 'twenty-sdk/define';
 
 import { WHATSAPP_WORKFLOW_NODE_UNIVERSAL_IDENTIFIER } from 'src/constants/universal-identifiers';
@@ -9,7 +18,7 @@ export default defineLogicFunction({
   universalIdentifier: WHATSAPP_WORKFLOW_NODE_UNIVERSAL_IDENTIFIER,
   name: 'whatsapp',
   description:
-    'Send WhatsApp text or approved template messages, or parse a simple incoming order command.',
+    'Send WhatsApp text or approved template messages from a Twenty workflow.',
   timeoutSeconds: 30,
   workflowActionTriggerSettings: {
     label: 'WhatsApp',
@@ -21,6 +30,7 @@ export default defineLogicFunction({
         properties: {
           success: { type: 'boolean' },
           acceptedByMeta: { type: 'boolean' },
+          provider: { type: 'string' },
           operation: { type: 'string' },
           messageId: { type: 'string' },
           recipientPhoneNumber: { type: 'string' },
@@ -30,20 +40,9 @@ export default defineLogicFunction({
           errorMessage: { type: 'string' },
           httpStatus: { type: 'number' },
           retryable: { type: 'boolean' },
-          kind: { type: 'string' },
-          command: { type: 'string' },
-          items: {
-            type: 'array',
-            items: {
-              type: 'object',
-              properties: {
-                itemId: { type: 'number' },
-                quantity: { type: 'number' },
-              },
-            },
-          },
-          itemCount: { type: 'number' },
-          totalQuantity: { type: 'number' },
+          providerErrorType: { type: 'string' },
+          providerErrorSubcode: { type: 'number' },
+          providerTraceId: { type: 'string' },
         },
       },
     ],

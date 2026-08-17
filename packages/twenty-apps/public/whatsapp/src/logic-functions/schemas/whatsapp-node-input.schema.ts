@@ -1,3 +1,12 @@
+/**
+ * WhatsApp Workflow for Twenty CRM
+ * Developed and maintained by Next Page Technologies Pvt. Ltd.
+ * Copyright (c) 2026 Next Page Technologies Pvt. Ltd.
+ * Website: https://www.nextpagetechnologies.com
+ * Support & Customization: hello@nextpagetechnologies.com
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { type InputJsonSchema } from 'twenty-sdk/logic-function';
 
 export const whatsappNodeInputSchema: InputJsonSchema = {
@@ -6,15 +15,15 @@ export const whatsappNodeInputSchema: InputJsonSchema = {
     operation: {
       type: 'string',
       label: 'Operation',
-      enum: ['SEND_TEXT', 'SEND_TEMPLATE', 'PARSE_ORDER'],
+      enum: ['SEND_TEXT', 'SEND_TEMPLATE'],
       description:
-        'Choose whether to send a text message, send an approved template, or parse a simple WhatsApp order command.',
+        'Choose whether to send a free-form text message or an approved WhatsApp template.',
     },
     recipientPhoneNumber: {
       type: 'string',
       label: 'Recipient phone number',
       description:
-        'Required for send operations. Supports a complete phone value or a phone-field object containing primaryPhoneNumber.',
+        'Required. Supports a complete phone value or a Twenty phone-field object containing primaryPhoneNumber.',
     },
     messageBody: {
       type: 'string',
@@ -81,14 +90,7 @@ export const whatsappNodeInputSchema: InputJsonSchema = {
       type: 'boolean',
       label: 'Continue workflow on error',
       description:
-        'Return success=false and error details instead of stopping the workflow when validation or Meta sending fails.',
-    },
-    incomingMessage: {
-      type: 'string',
-      label: 'Incoming message',
-      multiline: true,
-      description:
-        'Required when operation is PARSE_ORDER. Recognizes MENU, HELP, TRACK, CONFIRM, CANCEL and item formats such as 1x2, 3x1.',
+        'Return success=false and structured error details instead of stopping the workflow when validation or provider sending fails.',
     },
   },
   required: ['operation'],

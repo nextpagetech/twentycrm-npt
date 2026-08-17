@@ -2,3 +2,7 @@
 .twenty/
 node_modules/
 coverage/
+dist/
+.env
+.env.*
+!.env.example

@@ -211,7 +211,7 @@ Provider-specific payloads, response parsing and errors should remain inside pro
 
 Contributions are welcome. Read `CONTRIBUTING.md` before opening a pull request. Good contribution areas include provider implementations, additional WhatsApp message types, tests, documentation and Twenty compatibility fixes.
 
-Provider proposals can use `.github/ISSUE_TEMPLATE/provider_request.yml` after this package becomes the standalone repository.
+While this app remains inside the Twenty monorepo, open provider proposals as regular GitHub issues. A dedicated provider-request issue template will be added at repository root after migration to the standalone `twenty-whatsapp` repository.
 
 ## Professional support & customization
 
